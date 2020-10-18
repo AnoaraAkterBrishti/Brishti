@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>labtask 1</h2>
+<form action="/action_page.php">
+
+
+<label for="fname">Full Name</label>
+<input type="text" id="name" name="fname" placeholder="First">
+<input type="text" id="name" name="lname" placeholder="Last">
+<br>
+<br>
+
+<label for="ename">Email</label>
+<input type="text" id="name" name="ename">
+<br>
+<br>
+
+<label for="select">Subject</label>
+<select name="subject" id="subject">
+<option value="Algo">Algo</option>
+<option value="Java">Java</option>
+<option value="AI">AI</option>
+</select>
+
+<br>
+<br>
+<label for="table">Your Messsage</label>
+<textarea id="table" name="table" rows="5" cols="10"></textarea>
+<br>
+<br>
+
+<input type="submit" value="Submit"> <input type="Reset" value="Reset">
+</form> 
+</body>
+</html>
