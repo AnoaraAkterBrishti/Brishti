@@ -1,0 +1,147 @@
+<?php 
+	$stdIdErr=$stdNameErr=$stdGenderErr=$stdEmailErr=$stdAddressErr=$cityErr=$stateErr=$countryErr="";
+	$stdId=$stdName=$stdGender=$stdEmail=$stdAddress=$addressLine2=$city=$state=$zip=$country="";
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		if(empty($_REQUEST["stdId"])) {
+				  $stdIdErr = "Student Id is required";
+			}
+		else {
+				$stdId= $_REQUEST["stdId"];
+			}
+		if(empty($_REQUEST["stdName"])) {
+				  $stdNameErr = "Student Name is required";
+			}
+		else {
+				$stdName= $_REQUEST["stdName"];
+			}
+		if(empty($_REQUEST["gender1"])){
+				$gender1= "";
+			}
+			else{
+				$gender1= $_REQUEST["gender1"];
+			}
+		if(empty($_REQUEST["gender2"])){
+				$gender2= "";
+			}
+			else{
+				$gender2= $_REQUEST["gender2"];
+			}
+		if(empty($_REQUEST["gender1"]) && empty($_REQUEST["gender2"]))
+		{
+			$stdGenderErr = "Please Select One";
+		}
+		if($gender1 != "" && $gender2 != "" )
+		{
+			$stdGenderErr = "Please Select One";
+		}
+		else{
+			if($gender1 != ""){
+				$stdGender=$gender1;
+			}
+			else{
+				$stdGender=$gender2;
+			}
+		}
+		if(empty($_REQUEST["stdEmail"])) {
+				  $stdEmailErr = "Email is required";
+			}
+		else {
+				$stdEmail= $_REQUEST["stdEmail"];
+			}
+		if(empty($_REQUEST["address"])) {
+				  $stdAddressErr = "Address is required";
+			}
+		else {
+				$stdAddress= $_REQUEST["address"];
+			}
+		$addressLine2=$_REQUEST["addressLine2"];
+		if(empty($_REQUEST["city"])) {
+				  $cityErr = "City required";
+			}
+		else {
+				$city= $_REQUEST["city"];
+			}
+		if(empty($_REQUEST["state"])) {
+				  $stateErr = "Sate required";
+			}
+		else {
+				$state= $_REQUEST["state"];
+			}
+		$Zip=$_REQUEST["zip"];
+		if(empty($_REQUEST["country"])) {
+				  $countryErr = "Country is required";
+			}
+		else {
+				$country= $_REQUEST["country"];
+			}
+		function display(){
+		}
+	}
+ ?>
+ <style>
+ .error{
+	 color:red;
+ }
+ </style>
+<!doctype>
+<html>
+	<head>
+		<title>Form Validation</title>
+	</head>
+	<body>
+		<h1>Student Information</h1>
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> 
+			<label>Student Id</label><span class="error">*</span><br/>
+			<span class="error" ><?php echo $stdIdErr."<br/> </span>
+			<input type="text" name="stdId" />
+			<br/><br/>
+			<label>Student Name</label><span class="error">*</span><br/>
+			<span class="error"><?php echo $stdNameErr."<br/></span>
+			<input type="text" name="stdName" />
+			<br><br/>
+			<label>Student Gender</label><span class="error">*</span><br/>
+			<span class="error"><?php echo $stdGenderErr."<br/></span>
+			
+			<input type="checkbox" name="gender1" value="Male" />
+			<label>Male</label><br>
+			
+			<input type="checkbox" name="gender2" value="Female" />
+			<label>Female</label><br>
+			<br>
+			<label>Student Email</label><span class="error">*</span></br>
+			<span class="error"><?php echo $stdEmailErr."<br/></span>
+			<input type="text" name="stdEmail" value="" placeholder="@"/>
+			<br/><br/>
+			<label>Student Address</label><span class="error">*</span></br>
+			<span class="error"><?php echo $stdAddressErr."<br/></span>
+			<textarea name="address" cols="30" rows="1" ></textarea><br/>
+			<small>Street Address</small></br>
+			<textarea name="addressLine2" cols="30" rows="1" ></textarea><br/>
+			<small>Address Line 2</small></br>
+			<input type="text" name="city" /><br/>
+			<span class="error"><?php echo $cityErr."<br/></span>
+			<small>City</small><span class="error">*</span><br/>
+			<input type="text" name="state" /><br/>
+			<span class="error"><?php echo $stateErr."<br/></span>
+			<small>State/Province/Region</small><span class="error">*</span><br/>
+			<input type="text" name="zip" />
+			<br/>
+			<small>country</small>
+			<br/>
+			<select name="country"  >
+				<option name="country" value="None" ></option>
+				<option name="country" value="Bangladesh" >Bangladesh</option>
+				<option name="country" value="Uk" >Uk</option>
+				<option name="country" value="USA" >USA</option>
+			</select><br/>
+			<span class="error"><?php echo $Zip/Postal Code."<br/></span>
+			<small>Zip/Postal Code</small><span class="error">*</span></br>
+			<textarea name="Zip/postal code" cols="10" rows="1" ></textarea><br/>
+			<br>
+			
+			<input type="submit" name="" value="Save Form" />
+			
+		</form>
+	</body>
+	
+</html>
